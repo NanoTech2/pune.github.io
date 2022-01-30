@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUNE TOURISM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+  <style>
+          .navbar-brand{
+              font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          } 
+          @import url('https://fonts.googleapis.com/css?family=Arima+Madurai:100,200,300,400,500,700,800,900');
+body {
+	
+	font-size: 14px;
+	font-family: 'Arima Madurai', cursive;
+	background-color: white;
+  position: relative;
+  
+
+}
+.btn:hover,
+.btn:focus,
+.btn:active{
+    outline: 0 !important;
+}
+/* entire container, keeps perspective */
+.card-container {
+	  -webkit-perspective: 800px;
+   -moz-perspective: 800px;
+     -o-perspective: 800px;
+        perspective: 800px;
+        margin-top: 50px;
+        margin-left: 110%;
+        margin-bottom: -160px;
+}
+/* flip the pane when hovered */
+.card-container:not(.manual-flip):hover .card,
+.card-container.hover.manual-flip .card{
+	-webkit-transform: rotateY( 180deg );
+-moz-transform: rotateY( 180deg );
+ -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+
+.card-container.static:hover .card,
+.card-container.static.hover .card {
+	-webkit-transform: none;
+-moz-transform: none;
+ -o-transform: none;
+    transform: none;
+}
+/* flip speed goes here */
+.card {
+	 -webkit-transition: -webkit-transform .5s;
+   -moz-transition: -moz-transform .5s;
+     -o-transition: -o-transform .5s;
+        transition: transform .5s;
+-webkit-transform-style: preserve-3d;
+   -moz-transform-style: preserve-3d;
+     -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+	position: relative;
+  
+
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	-webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+     -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #FFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+    
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+		-webkit-transform: rotateY( 180deg );
+   -moz-transform: rotateY( 180deg );
+     -o-transform: rotateY( 180deg );
+        transform: rotateY( 180deg );
+        z-index: 3;
+}
+
+.back .btn-simple{
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+}
+/*        Style       */
+
+
+.card{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    color: #444444;
+}
+.card-container, .front, .back {
+	width: 100%;
+	height: 420px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+-moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+}
+.card .cover{
+    height: 120px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+}
+.card .cover img{
+    width: 100%;
+}
+.card .user{
+    border-radius: 50%;
+    display: block;
+    height: 120px;
+    margin: -55px auto 0;
+    overflow: hidden;
+    width: 120px;
+}
+.card .user img{
+    
+    width: 100%;
+}
+
+.card .content{
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    padding: 10px 20px 20px;
+}
+.card .content .main {
+    min-height: 160px;
+}
+.card .back .content .main {
+    height: 215px;
+}
+.card .name {
+		font-family: 'Arima Madurai', cursive;
+    font-size: 22px;
+    line-height: 28px;
+    margin: 10px 0 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+.card h5{
+    margin: 5px 0;
+    font-weight: 400;
+    line-height: 20px;
+}
+.card .profession{
+    color: #999999;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.card .footer {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    margin: 8px 0 0;
+    padding: 10px 0 0;
+    text-align: center;
+}
+.card .footer .social-links{
+    font-size: 18px;
+}
+.card .footer .social-links a{
+    margin: 0 7px;
+}
+.card .footer .btn-simple{
+    margin-top: -6px;
+}
+.card .header {
+    padding: 15px 20px;
+    height: 90px;
+}
+.card .motto{
+		font-family: 'Arima Madurai', cursive;
+    border-bottom: 1px solid #EEEEEE;
+    color: #999999;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.card .stats-container{
+	width: 100%;
+	margin-top: 50px;
+}
+.card .stats{
+	display: block;
+	float: left;
+	width: 33.333333%;
+	text-align: center;
+}
+
+.card .stats:first-child{
+	border-right: 1px solid #EEEEEE;
+}
+.card .stats:last-child{
+	border-left: 1px solid #EEEEEE;
+}
+.card .stats h4{
+		font-family: 'Arima Madurai', cursive;
+	font-weight: 300;
+	margin-bottom: 5px;
+}
+.card .stats p{
+	color: #777777;
+}
+/*      Just for presentation        */
+
+.title{
+    color: #506A85;
+    text-align: center;
+    font-weight: 300;
+    font-size: 44px;
+    margin-bottom: 90px;
+    line-height: 90%;
+}
+.title small{
+    font-size: 17px;
+    color: #999;
+    text-transform: uppercase;
+    margin: 0;
+}
+.space-30{
+	height: 30px;
+	display: block;
+}
+.space-50{
+    height: 50px;
+    display: block;
+}
+.space-200{
+    height: 200px;
+    display: block;
+}
+.white-board{
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 60px 60px 20px;
+}
+.ct-heart{
+    color: #F74933;
+}
+
+ pre.prettyprint{
+    background-color: #ffffff;
+    border: 1px solid #999;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: left;
+}
+.atv, .str{
+    color: #05AE0E;
+}
+.tag, .pln, .kwd{
+     color: #3472F7;
+}
+.atn{
+  color: #2C93FF;
+}
+.pln{
+   color: #333;
+}
+.com{
+    color: #999;
+}
+
+.btn-simple{
+    opacity: .8;
+    color: #666666;
+    background-color: transparent;
+}
+
+.btn-simple:hover,
+.btn-simple:focus{
+    background-color: transparent;
+    box-shadow: none;
+    opacity: 1;
+}
+.btn-simple i{
+    font-size: 16px;
+}
+
+.navbar-brand-logo{
+    padding: 0;
+}
+.nav
+.navbar-brand-logo .logo{
+    border: 1px solid #333333;
+    border-radius: 50%;
+    float: left;
+    overflow: hidden;
+    width: 60px;
+}
+.navbar .navbar-brand-logo .brand{
+    color: #FFFFFF;
+    float: left;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 60px;
+}
+.navbar-default .navbar-brand-logo .brand{
+    color: #555;
+}
+
+
+/*       Fix bug for IE      */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .front, .back{
+        -ms-backface-visibility: visible;
+        backface-visibility: visible;
+    }
+
+    .back {
+        visibility: hidden;
+        -ms-transition: all 0.2s cubic-bezier(.92,.01,.83,.67);
+    }
+    .front{
+        z-index: 4;
+    }
+    .card-container:not(.manual-flip):hover .back,
+    .card-container.manual-flip.hover .back{
+        z-index: 5;
+        visibility: visible;
+    }
+}
+
+        </style>
+
+</head>
+
+<body>
+     <!--Start of navigation bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" style="font-family:cursive;" ><img style="width: 70px; height: 70px; border-radius: 50%;" src="./photos/h.jpg" >PUNE TOURISM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto " style="margin-left: 78%;">
+                <li class="nav-item active">
+                    <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#text">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-expanded="false">
+                        Places
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#aa">Shaniwar Wada</a>
+                        <a class="dropdown-item" href="#bb">Dagdusheth Ganpati</a>
+                        <a class="dropdown-item" href="#cc">Aga Khan Palace</a>
+                        <a class="dropdown-item" href="#dd">Rajiv Gandhi Zoo</a>
+                        <a class="dropdown-item" href="#ee">Sinhgad Fort</a>
+                        <a class="dropdown-item" href="#ff">Raja Kelkar Museum</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#zz">Contact Us</a>
+                </li>
+            </ul>
+            
+        </div>
+    </nav>
+    <!--End of navigation bar-->
+    <marquee style="color: orange;"><i>*** Due to Covid the tourists Places timing are changed or the places can be shut down. So before going check that the palce is opened or not!!! ***</i> </marquee>
+    <!-- Start of Slider-->
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="height: 700px;">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" >
+          <div class="carousel-item active" data-interval="3000">
+            <img src="./photos/d.jpg    " class="d-block w-100" alt="..." style="height: 700px;">
+            <div class="carousel-caption d-none d-md-block" style="padding-bottom: 18%;  font-size: 30px; color: rgb(203, 224, 8); font-family: cursive;">
+              <h1 style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 80px; color: white;">WELCOME TO PUNE</h1>
+              <p>Explore the Places with love</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="3000">
+            <img src="./photos/b.jpg" class="d-block w-100" alt="..." style="height: 700px;">
+            <div class="carousel-caption d-none d-md-block" style="font-size: 60px;color: rgb(196, 199, 22); font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding-bottom: 25%;">
+              <p>“You’re braver than you believe, and stronger than you seem, and smarter than you think.”</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="3000">
+            <img src="./photos/c.jpg" class="d-block w-100" alt="..." style="height: 700px;">
+            <div class="carousel-caption d-none d-md-block" style="padding-bottom: 10%;  font-size: 60px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
+              <h1></h1>
+              <p>“You always pass failure on the way to success.”</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
+ <!-- End of Slider-->
+ <!-- About pune-->
+        <div class="container-fuiled" style="height:100%;background-image: url(./photos/ppp.jpg);background-position: center; text-align: center; margin-bottom: 0%; font-family:Audiowide; font-size: 25px; background-color: rgb(185, 230, 138);"><p style="font-weight: 900; font-size: 40px; margin-bottom: -15px;">Ab<font color=red>out</font> Pu<font color=red>ne</font></p>
+        <div id="text">
+          <p style="text-align: left 5px;  font-size:18px; font-family:'Times New Roman', Times;"><br>Pune is the seventh most populous city in India and the second-largest city in the state of Maharashtra, with an estimated population of 7.4 million as of 2020. It has been ranked as "the most liveable city in India" several times. Along with the municipal corporation limits of PCMC and the three cantonment towns of Camp, Khadki and Dehu Road, Pune forms the urban core of the eponymous Pune Metropolitan Region (PMR).<br>
+          In the 18th century, the city was the seat of the Peshwas, the prime ministers of the Maratha Empire and one of the most important political centres on the Indian subcontinent. The city was also ruled by the Ahmadnagar Sultanate, the Mughals and the Adil Shahi dynasty. Historical landmarks include Lal Mahal, the Kasba Ganapati temple and Shaniwar Wada. Major historical events involving the city include the Mughal–Maratha Wars and the Anglo-Maratha Wars. </p></div>
+         <div id="mm" ><img style=" float: left;border: 3px solid whitesmoke; margin-left: 150px;margin-top: 30px;  height: 270px; width: 270px; border-radius: 50%;" src="./photos/vb.jpg"><p style="float: left; margin-top: 85px; margin-left: 55px; font-family: Courier, monospace;">
+         <B> “We are addicted to our thoughts. We cannot change anything <br> 
+          if we cannot change our thinking.”</B></p></div>
+          <div id="pp" ><p style="font-family: Courier,monospace; float: left;font-style: italic; margin-top: 180px; margin-left: -300px;">
+            <b>“Closed in a room, my imagination becomes the universe, ”<br> 
+            and the rest of the world is missing out.</b></p></div>
+            <img style=" float:left; border: 3px solid whitesmoke; margin-left: 80px; margin-top: 30px;  height: 270px; width: 270px; border-radius: 50%;" src="./photos/vc.JPG">
+          <button style=" font-size: 15px; border-radius: 40px; margin-top: 530px; margin-left: -90%; "><a style="text-decoration: none;" href="https://en.wikipedia.org/wiki/Pune" target="blank" > Click for More!! </a></button> </div>
+         
+          <!-- Start of card-->
+          <div class="container-fuiled" style="margin-top: 3px;background-color: white; ">
+     <div class="card-deck" >
+        <div class="card" style="border-radius: 50px ;border: none;">
+      <img id="aa" style="height: 50%; border-radius: 20px;" src="./photos/e.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Shaniwar Wada</h4>
+        <p class="card-text" >Shaniwar Wada (ISO: Śanivāravāḍā) (शनिवार वाडा) is a historical fortification in the city of Pune in Maharashtra, India. Built in 1732, it was the great seat of the Peshwas of the Maratha Empire until 1818. Following the rise of the Maratha Empire, the palace became the center of Indian politics in the 18th century.</p>
+      </div>
+      
+    </div>
+    <div class="card" style="border-radius: 50px ; border: none;">
+      <img id="bb" style="height: 50%; border-radius: 20px;" src="./photos/h.jpg" class="card-img-top" alt="...">
+      <div class="card-body" > 
+        <h5 class="card-title">Dagdusheth Ganpati</h5>
+        <p class="card-text">The Dagadusheth Halwai Ganapati temple in Pune is dedicated to the Hindu god Ganesh. The main Ganesh idol is insured for sum of ₹10 million (US$130,000). The temple celebrated 129 years of its Ganapati in the year 2021.</p>
+      </div>
+    </div>
+    <div class="card" style="border-radius: 50px ; border: none;">
+      <img id="cc" style="height: 50%; border-radius: 20px;" src="./photos/i.jpg" class="card-img-top" alt="...">
+      <div class="card-body" >
+        <h5 class="card-title" >Aga Khan Palace</h5>
+        <p class="card-text">The Aga Khan Palace was built by Sultan Muhammed Shah Aga Khan III in Pune, The palace was an act of charity by the spiritual leader of the Nizari Ismaili Muslims, who wanted to help the poor in the neighbouring areas of Pune, who were drastically hit by famine.</p>
+      </div>
+      </div>
+    <div class="card" style="border-radius: 50px ;border: none;">
+      <img id="dd" style="height: 50%; border-radius: 20px;" src="./photos/m.jpg" class="card-img-top" alt="...">
+      <div class="card-body" > 
+        <h5 class="card-title">Rajiv Gandhi Zoo</h5>
+        <p class="card-text">The Rajiv Gandhi Zoological Park, commonly known as the Rajiv Gandhi Zoo or Katraj Zoo, is located in Katraj, Pune district, Maharashtra State, India. It is managed by the Pune Municipal Corporation. The 130-acre (53 ha) zoo is divided into three parts: an animal orphanage, a snake park.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2" >
+  <div class="col mb-4" style="background-color: white;">
+    <div class="card" style="border-radius: 50px ; border: none;">
+      <img id="ee" style="height: 30%; width: 45%; margin-left: 200px; border-radius: 20px; " src="./photos/l.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Sinhgad Fort</h5>
+        <p class="card-text">Sinhagad is a hill fortress located at around 49 km southwest of the city of Pune, India. Some of the information available at this fort suggests that the fort could have been built 2000 years ago.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4" style="background-color: white;">
+    <div class="card" style="border-radius: 50px ; border: none;">
+      <img id="ff" style="height: 50%; width: 48%; margin-top: 10px; margin-left: 200px; border-radius: 20px;" src="./photos/hh.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Raja Kelkar Museum</h5>
+        <p class="card-text">The Raja Dinkar Kelkar Museum is in Pune, Maharashtra, India. It contains the collection of Dr. Dinkar G. Kelkar, dedicated to the memory of his only son, Raja. The three-storey building houses various sculptures. </p>
+      </div>
+    </div>
+  </div>
+  </div>
+<hr width="80%" size="30" noshade="">
+  <!-- End of cards-->
+  <!-- rotating card-->
+  <div class="col-md-4 col-sm-6">
+    <div class="card-container" >
+        <div class="card" >
+            <div class="front">
+                <div class="cover">
+                    <img src="./photos/asd.jpg">
+                </div>
+                <div class="user">
+                  <img class="img-circle" src="./photos/sss.jpeg"/>
+              </div>
+                <div class="content">
+                    <div class="main">
+                        <h3 class="name">Dnyaneshwar Sonawane</h3>
+                        <p class="profession">Web Designer</p>
+
+                        <p class="text-center"> “If you want to shine like a sun. First burn like a sun.”<br> – Dr. APJ Abdul Kalam</p>
+                    </div>
+                    <div class="footer">
+                        <div class="rating">
+                            <i class="fa fa-mail-forward"></i> Drag Mouse to Rotate
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end front panel -->
+            <div class="back">
+                <div class="header">
+                    <h5 class="motto">"“Being a family means you are a part of something very wonderful. It means you will love and be loved for the rest of your life.”"</h5>
+                </div>
+                <div class="content">
+                    <div class="main">
+                        <h4 class="text-center">About me</h4>
+                        <p class="text-center"> I'm here to set a benchmark for excellence in the field of Computer Engineering through my best performance and Skills.
+                          The language I know Web design,Java, C++, SQL....</p>
+
+                        <div class="stats-container">
+                          <div class="stats">
+                            <h4></h4>
+                            <p>
+                              
+                            </p>
+                        </div> 
+                          <div class="stats">
+                                <h4>46</h4>
+                                <p>
+                                    Projects
+                                </p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div> <!-- end back panel -->
+        </div> <!-- end card -->
+    </div> <!-- end card-container -->
+</div> <!-- end col-sm-3 -->
+</div> <!-- end col-sm-10 -->
+</div> <!-- end row -->
+<div class="space-200"></div>
+</div>
+<hr width="80%" size="30" noshade="">
+
+<!--End of rotating card-->
+  <!--Footer-->
+  <div class="card text-center" style="border-radius: 20px;">
+    <div class="card-header" style="border-radius: 20px; background-color: rgb(241, 237, 237); font-family: cursive; font-size: 18px;">
+      For More Places
+    </div>
+    <div class="card-body">
+      <h5 class="card-title" style="font-family: cursive;">To visit or see new places in Pune just visit this websites.  </h5>
+      <p class="card-text"></p>
+      <a href="https://www.holidify.com/places/pune/sightseeing-and-things-to-do.html" class="btn btn-primary" target="_blank">Visit</a>
+    </div>
+    <div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60531.95502605686!2d73.86192688536656!3d18.517728501889433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1643193448758!5m2!1sen!2sin" width="400" height="350" style="border-radius: 20px; border: 1px solis black;" allowfullscreen="" loading="lazy"></iframe>
+      <iframe width="400" height="350" src="https://www.youtube.com/embed/oXLrwDfPYEY" title="YouTube video player"  allowfullscreen style="border-radius: 20px; border: 1px solis black; margin-left: 100px;"></iframe>
+  </div>
+    <!-- End of footer--> 
+   <div class="card text-center" style="border-top-right-radius: 20px; border-top-left-radius: 20px; background:linear-gradient(rgb(245, 245, 101),orange)">
+    <div class="card-header" id="zz" style="border-radius: 20px; background-color: rgb(233, 227, 227); font-family: cursive; font-size: 18px;">
+      Contact Us
+    </div>
+    <div class="card-body">
+      <h5 class="card-title" style="font-family: cursive;"><img style="border-radius: 5px; height: 30px; width: 30px;" src="./photos/pp.png"> sonawanednyaneshwar211@gmail.com</h5>
+      <h5 class="card-title" style="font-family: cursive;"><img style="border-radius: 5px; height: 30px; width: 30px;" src="./photos/nmn.jpg">8380995329</h5>
+      <p class="card-text"></p>
+      <a href="https://www.facebook.com/" target="_blank"><img style="height: 40px; width: 40px; border-radius: 50%;" src="./photos/aa.png" ></a>   
+      <a href="https://www.instagram.com/" target="_blank"><img style="height: 43px;margin-left: 5px; width: 43px; border-radius: 50%;" src="./photos/vv.png" ></a>
+      <a href="https://twictter.com/login?lang=en" target="_blank"><img style="height: 45px;margin-left: 5px; width: 45px; border-radius: 50%;;" src="./photos/cc.png" ></a>
+    <div>
+      <img style="border-radius: 5px; margin-top: 5px;" src="./photos/qr.png">
+    </div>  
+    <marquee>Copyright @ 2022, Designed & Developed by NanoTech Softwares</marquee>  
+    </div>
+   
+  </div>
+  <script>
+  $().ready(function(){
+    $('[rel="tooltip"]').tooltip();
+
+});
+
+function rotateCard(btn){
+    var $card = $(btn).closest('.card-container');
+    console.log($card);
+    if($card.hasClass('hover')){
+        $card.removeClass('hover');
+    } else {
+        $card.addClass('hover');
+    }
+}
+</script>
+</body>
+
+</html>
